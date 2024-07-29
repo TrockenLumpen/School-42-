@@ -1,4 +1,4 @@
-# ft_str_length_fast Function Description
+# ft_str_length_fast Function Descriptionm leck eier
 ```c
 unsigned int ft_str_length_fast(char *dest);
 ```
