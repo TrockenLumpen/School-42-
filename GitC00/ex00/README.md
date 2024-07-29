@@ -38,3 +38,7 @@ void	ft_putchar(char c)
 > `char c`: The character to be printed.
 ## Behavior
 > The function uses the write system call to write the character c to stdout. The first argument 1 specifies stdout as the file descriptor, the second argument &c passes the address of the character to be written, and the third argument 1 indicates that one byte should be written.
+```mermaid
+a-->b;
+b-->a;
+```
