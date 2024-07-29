@@ -18,9 +18,9 @@ int	main(void)
 #include <unistd.h>
 ```
 > [!TIP]
-> For the most time you will be working with **<unistd.h>**
+> For the most time you will be working with `<unistd.h>`
 
-> **<unistd.h>** is a library made by 42 so don't be surprised when its new to you.
+> `<unistd.h>` is a library made by 42 so don't be surprised when its new to you.
 # Function
 ```c
 void	ft_putchar(char c)
@@ -35,6 +35,6 @@ void	ft_putchar(char c)
 ## Purpose
 > The ft_putchar function is a custom implementation of the standard library function putchar. It writes a single character to the standard output (stdout).
 ## Parameters
-> char c: The character to be printed.
+> `char c`: The character to be printed.
 ## Behavior
 > The function uses the write system call to write the character c to stdout. The first argument 1 specifies stdout as the file descriptor, the second argument &c passes the address of the character to be written, and the third argument 1 indicates that one byte should be written.
