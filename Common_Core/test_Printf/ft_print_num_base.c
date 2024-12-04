@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
+/* this function is simple and is only meant to go trough a string and if not should stop 
+   and return 0 */
 int	ft_strlen(const char *str)
 {
 	int	lenght;
@@ -28,8 +29,8 @@ void	ft_print_num_base(unsigned long int p, char *base, int *i)
 {
 	unsigned long int	lenght;
 
-	lenght = ft_strlen(base);
-	if (p / lenght)
-		ft_print_num_base(p / lenght, base, i);
-	ft_print_char(base[p % lenght], i);
+	lenght = ft_strlen(base); // calculate the lenght of the Base
+	if (p / lenght) // If p is large enough to have more digits
+		ft_print_num_base(p / lenght, base, i); //Recursively print the higher-order digits
+	ft_print_char(base[p % lenght], i);//Print the current digit in the correct base 
 }

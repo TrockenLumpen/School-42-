@@ -13,17 +13,17 @@
 #ifndef FT_PRINTF_H
 
 # define FT_PRINTF_H
-
+// Librarys
 # include <limits.h>
 # include <stdarg.h>
 # include <stddef.h>
 # include <stdint.h>
 # include <stdlib.h>
 # include <unistd.h>
-
+// We define Base16 in a constante for multiplie uses.
 # define HEX_UPP_BASE "0123456789ABCDEF"
 # define HEX_LOW_BASE "0123456789abcdef"
-
+// Functions
 int		ft_printf(const char *str, ...);
 void	ft_main(va_list args, char *str, int *i);
 void	ft_print_char(char c, int *i);

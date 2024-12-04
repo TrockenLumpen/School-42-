@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
+/* Here we define for Printf witch letter meant for each function(like in the original)
+	va_list is meant to store information about the designaded functions Arguments like a list */
 void	ft_main(va_list args, char *str, int *i)
 {
 	if (*str == 'c')
@@ -31,7 +32,7 @@ void	ft_main(va_list args, char *str, int *i)
 	else if (*str == '%')
 		ft_print_char(*str, i);
 }
-
+/* Here we use the list we created above. The & is from va_start and is meant to take the designaded pointer of the function above and utilise it into a another function */
 int	ft_printf(const char *str, ...)
 {
 	va_list	args;
