@@ -6,16 +6,16 @@
 /*   By: lkohn <lkohn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 16:53:37 by lkohn             #+#    #+#             */
-/*   Updated: 2024/11/18 14:34:43 by lkohn            ###   ########.fr       */
+/*   Updated: 2024/12/02 10:17:50 by lkohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_print_string(char *str, int i)
+void	ft_print_string(char *str, int *i)
 {
 	if (!str)
-		str = (0);
+		str = "(null)";
 	while (*str)
 	{
 		ft_print_char(*str, i);

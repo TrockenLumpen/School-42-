@@ -6,7 +6,7 @@
 /*   By: lkohn <lkohn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 08:29:07 by lkohn             #+#    #+#             */
-/*   Updated: 2024/11/25 11:24:28 by lkohn            ###   ########.fr       */
+/*   Updated: 2024/12/02 14:34:07 by lkohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_main(va_list args, char *str, int *i)
 	else if (*str == 'X')
 		ft_print_hex(va_arg(args, unsigned int), i, HEX_UPP_BASE);
 	else if (*str == '%')
-		ft_print_num(va_arg(args, int), i);
+		ft_print_char(*str, i);
 }
 
 int	ft_printf(const char *str, ...)
@@ -49,7 +49,7 @@ int	ft_printf(const char *str, ...)
 			ft_main(args, (char *)str, &i);
 		}
 		else
-			ft_print_char(*str, i);
+			ft_print_char(*str, &i);
 		str++;
 	}
 	va_end(args);

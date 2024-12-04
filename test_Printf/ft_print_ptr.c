@@ -6,7 +6,7 @@
 /*   By: lkohn <lkohn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:10:52 by lkohn             #+#    #+#             */
-/*   Updated: 2024/11/25 13:11:38 by lkohn            ###   ########.fr       */
+/*   Updated: 2024/12/02 14:56:34 by lkohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ void	ft_print_ptr(void *ptr, int *i)
 {
 	unsigned long	p;
 
-	p = (unsigned int)ptr;
+	p = (unsigned long)ptr;
 	if (p)
 	{
-		ft_print_char('0x', i);
-		ft_print_num_base(p, "123456789abcdef", i);
+		ft_print_string("0x", i);
+		ft_print_num_base(p, "0123456789abcdef", i);
 	}
 	else
-		ft_print_str("(nol)", i);
+		ft_print_string("(nil)", i);
 }
