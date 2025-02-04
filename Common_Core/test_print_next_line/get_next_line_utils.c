@@ -1,23 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_extr.c                               :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lkohn <lkohn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 14:39:27 by lkohn             #+#    #+#             */
-/*   Updated: 2024/12/21 11:41:58 by lkohn            ###   ########.fr       */
+/*   Updated: 2025/01/31 17:14:26 by lkohn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-/**
- * Calculates the lenght of a given string.
- *
- * @param s The string to calculate the lenght of.
- * @return The lenght of the string.
- */
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;
@@ -29,13 +23,6 @@ size_t	ft_strlen(const char *s)
 	}
 	return (i);
 }
-/**
- * This function takes 2 strings and joins them, togheter.
- *
- * @param s1 The first string.
- * @param s2 The second string.
- * @return A newly created string consisting of the 2 strings.
- */
 char	*strjoin(char const *s1, char const *s2)
 {
 	char	*result;
@@ -66,52 +53,29 @@ char	*strjoin(char const *s1, char const *s2)
 	}
 	return (NULL);
 }
-/**
- * Fills a certain space in memory up with the value c, starting
- * from s, and up to n charackters.
- * @param s The starting destination in the memory.
- * @param c The charackter, or number, that will fill.
- * @param len How manz bytes should be filled.
- * @return A pointer to the starting destination.
- */
-void	*ft_memset(void *s, int c, size_t len)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	unsigned char	*ptr;
-
-	ptr = (unsigned char *)s;
-	while (len--)
-		*ptr++ = (unsigned char)c;
-	return (len);
+	while (n--)
+	{
+		((unsigned char *)s[c]) = (unsigned char)c;
+		return (s);
+	}
 }
-/**
- * Allocates a certain amount of memory and
- * initializes all the alloocated bytes to zero.
- *
- * @param count The amount of blocks to allocate.
- * @param size The size to allocate.
- * @return A pointer to the whole allocated block.
- */
-void	*ft_calloc(size_t count, size_t size)
+void	*ft_calloc(size_t count, size_t sizematters)
 {
 	void	*ptr;
 
-	if (count != 0 && size > SIZE_MAX / count)
+	if (count != 0 && sizematters > SIZE_MAX / count)
 		return (NULL);
-	ptr = malloc(count * size);
+	ptr = malloc(count * sizematters);
 	if (!ptr)
 		return (NULL);
-	ft_memset(ptr, 0, count * size);
+	ft_memset(ptr, 0, count * sizematters);
 	return (ptr);
 }
-/**
- * Searches for a specified charackter c in a given string s.
- *
- * @param s the string to perform the search operation on.
- * @param c The charackter to the charackter thaqt should be found.
- */
 char	*ft_strchr(const char *s, int c)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (s[i])
