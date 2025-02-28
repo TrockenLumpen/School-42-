@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-char	*ft_free(char *buffer, const char *buf)
+char	*ft_free(char *buffer, char *buf)
 {
 	char	*temp;
 
@@ -25,7 +25,7 @@ char	*ft_next(char *buffer)
 {
 	int		i;
 	int		j;
-	char	*linie;
+	char	*line;
 
 	i = 0;
 	while (buffer[i] && buffer[i] != '\n')
@@ -35,64 +35,69 @@ char	*ft_next(char *buffer)
 		free(buffer);
 		return (NULL);
 	}
-	linie = ft_calloc((ft_strlen(buffer) - i + 1), sizeof(char));
+	line = ft_calloc((ft_strlen(buffer) - i + 1), sizeof(char));
 	i++;
 	j = 0;
 	while (buffer[i])
-		linie[i++] = buffer[j++];
+		line[j++] = buffer[i++];
 	free(buffer);
-	return (linie);
+	return (line);
 }
 
 char	*ft_line(char *buffer)
 {
-	char	*linie;
+	char	*line;
 	int		i;
 
 	i = 0;
 	if (!buffer[i])
-		return (0);
+		return (NULL);
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
-	linie = ft_calloc(i + 1, sizeof(char));
+	line = ft_calloc(i + 2, sizeof(char));
 	i = 0;
 	while (buffer[i] && buffer[i] != '\n')
-		linie[i] = buffer[i];
-	i++;
+	{
+		line[i] = buffer[i];
+		i++;
+	}
 	if (buffer[i] && buffer[i] == '\n')
-		linie[i++] = '\n';
-	return (linie);
+		line[i++] = '\n';
+	return (line);
 }
 
-char	*read_file(const int fd, char *res)
+char	*read_file(int fd, char *res)
 {
-	char	*buff;
+	char	*buffer;
 	int		byte_read;
 
 	if (!res)
-		res = malloc(1);
-	buff = malloc((BUFFER_SIZE + 1) * sizeof (char));
+		res = ft_calloc(1, 1);
+	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	byte_read = 1;
 	while (byte_read > 0)
 	{
-		byte_read = read(fd, buff, BUFFER_SIZE);
+		byte_read = read(fd, buffer, BUFFER_SIZE);
 		if (byte_read == -1)
-			return (free(res), free(buff), NULL);
-		buff[byte_read] = '\0';
-		res = ft_free(res, buff);
-		if (ft_strchr(buff, '\n'))
+		{
+			free(buffer);
+			return (NULL);
+		}
+		buffer[byte_read] = 0;
+		res = ft_free(res, buffer);
+		if (ft_strchr(buffer, '\n'))
 			break ;
 	}
-	free(buff);
+	free(buffer);
 	return (res);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	*buffer;
-	char	*line;
+	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0) 
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
 	buffer = read_file(fd, buffer);
 	if (!buffer)
